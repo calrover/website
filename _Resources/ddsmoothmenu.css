@@ -1,0 +1,186 @@
+@charset "UTF-8";
+/*
+	ddsmoothmenu styles adapted for Sandvox 2
+
+		* Our menu is always inside #sitemenu-content, so address it that way rather than using the .ddsmoothmenu classes.
+			This allows us to interact with the Sandvox designs more easily.
+
+		* Includes CSS for both horizontal and vertical menus.
+*/
+
+
+/*
+	CSS for shadow added to sub menus.
+	Not used in Sandvox setup.
+*/
+
+.ddshadow{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 0;
+	background: silver;
+}
+
+.toplevelshadow{ /*shadow opacity. Doesn't work in IE*/
+	opacity: 0.8;
+}
+
+
+
+
+/*
+	GENERAL SETUP AND HORIZONTAL MENUS
+	adapted from ddsmooothmenu.css
+*/
+
+#sitemenu-content ul {
+	z-index: 5000;
+}
+
+#sitemenu-content ul ul {
+	z-index: auto;
+}
+
+/* Top level list items */
+#sitemenu-content ul li {
+	position: relative;
+	display: inline;
+}
+
+#sitemenu-content ul ul {
+	text-align: left; /* prevent centred submenu items */
+	height: auto;
+}
+
+/* IE6 hack to get sub menu links to behave correctly */
+* html #sitemenu-content ul li a {
+	display: inline-block;
+}
+
+/* CSS class that's dynamically added to the currently active menu items' LI A element */
+#sitemenu-content ul li a.selected { }
+
+
+/* Submenus */
+#sitemenu-content ul li ul {
+	position: absolute;
+	right: 0;
+	margin: 0em;
+	margin-bottom: 15px;
+	padding: 0em;
+	display: none; /*collapse all sub menus to begin with*/
+	visibility: hidden;
+	list-style-type: none;
+	width: 200px; /* or rather auto? */
+	background: #fff;
+	border: 1px #666 solid;
+	box-shadow: 3px 2px 4px #999;
+	-webkit-box-shadow: 3px 2px 4px #999;
+	-moz-box-shadow: 3px 2px 4px #999;
+}
+
+/* Submenu items (undo style from Top level List Items) */
+#sitemenu-content ul li ul li {
+	display: list-item;
+	float: none;
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+}
+
+/* All subsequent sub menu levels vertical offset after 1st level sub menu */
+#sitemenu-content ul li ul li ul {
+	top: 0;
+}
+
+/* Sub level menu links style */
+#sitemenu-content ul li ul li span.in {
+	width: auto; /* width of sub menus ******************* */
+	padding: 5px 15px 5px 5px;
+	margin: 0;
+	border-top-width: 0;
+	border-bottom: 1px solid #ddd;
+}
+
+#sitemenu-content ul li ul li.last>span.in {
+	border-bottom: 0px none;
+}
+
+#sitemenu-content ul li ul li span.in,
+#sitemenu-content ul li ul li a {
+	display: block;
+	position: relative;
+}
+
+#sitemenu-content ul li ul li a:hover {
+	text-decoration: underline;
+}
+
+/* Holly Hack for IE \*/
+* html #sitemenu-content {
+	height: 1%;
+}
+/*Holly Hack for IE7 and below*/
+
+
+
+
+
+/*
+	VERTICAL MENUS
+	adapted from ddsmoothmenu-v.css
+*/
+
+#sitemenu-content.ddsmoothmenu-v ul li {
+	display: list-item;
+	position: relative;
+}
+
+/* Sub level menu items */
+#sitemenu-content.ddsmoothmenu-v ul li ul {
+	top: 0;
+	right: auto;
+}
+
+/* Holly Hack for IE \*/
+* html #sitemenu-content.ddsmoothmenu-v ul li a {
+	height: 1%;
+}
+/*Holly Hack for IE7 and below*/
+
+
+
+
+
+/*
+	SUBMENU INDICATORS
+	Elementary styling for the .submenu-indicator class which is appended to menu items that have submenus.
+	Default styling uses triangle images pointing to the right and bottom.
+	Designs may need to adjust the spacing and/or images to suit their look.
+*/
+
+#sitemenu-content ul .submenu-indicator {
+	display: inline-block;
+	background: url(down.gif) center center no-repeat;
+	width: 11px;
+	height: 8px;
+	padding: 0 0 0 3px;
+	position: relative; /* IE6/7 love to make sure the arrow doesn't occasionally vanish */
+}
+
+#sitemenu-content.ddsmoothmenu-v ul .submenu-indicator,
+#sitemenu-content ul ul .submenu-indicator {
+	display: block;
+	background: url(right.gif) center center no-repeat;
+	width: 8px;
+	height: 11px;
+	position: absolute;
+	top: 8px;
+	right: 5px;
+}
+
+#sitemenu-content.ddsmoothmenu-v ul .submenu-indicator {
+	top:3px;
+}
