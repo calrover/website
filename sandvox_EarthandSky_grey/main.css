@@ -1,0 +1,707 @@
+@charset "UTF-8";
+
+/* 
+   css Copyright © 2005-2012 Karelia Software. All rights reserved.
+   css released under Creative Commons License  - http://creativecommons.org/licenses/by-sa/2.5/ 
+   All associated graphics belong to their respective owners and are licensed separately. 
+*/
+
+/* IE7 hacks */
+
+*:first-child+html .gridItem img {
+	position:relative;
+	top:0px;
+}
+
+*:first-child+html .gridItem h3 {
+	position:relative;
+	top:0px;
+}
+
+/* Navigation arrows */
+div.text-navigation { text-align:center; margin-bottom:1em;}
+div.text-navigation div { display:inline; margin:0px 0.5em; }
+.collection-navigation .disabled-navigation { text-indent:-5000px; }
+
+/* 2.0 wrap compatibility. 2.0-compatible designs can further adjust these if they need */
+.wide { display:block; }
+
+.narrow.left {   /* Some designs won't respect without !important */
+    float:left!important;
+    clear:left!important;
+}
+.narrow.right {
+    float:right!important;
+    clear:right!important;
+}
+
+.wide.left .graphic, img.wide.left { margin-left:0px; margin-right:auto; }
+.wide.center .graphic, img.wide.center { margin-left:auto; margin-right:auto; }
+.wide.right .graphic, img.wide.right { margin-left:auto; margin-right:0px; }
+
+.ImageElement.left, .AudioElement.left { text-align:left; }
+.ImageElement.center, .AudioElement.center { text-align:center; }
+.ImageElement.right, .AudioElement.right { text-align:right; }
+
+/* Captions should align themselves with the graphic */
+.graphic-container.left .caption { text-align:left; }
+.graphic-container.center .caption { text-align:center; }
+.graphic-container.right .caption { text-align:right; }
+
+/* Inline iframes need to display as a block to layout right */
+.graphic iframe { display:block; }
+
+/* Pagelet photo grids should be generally be auto width (some 1.x designs hardcoded an exact width) */
+.pagelet .photogrid-index { width:auto; }
+
+/* For content like amazon which forces white background. Design SHOULD set color for A tag and text color. */
+.whiteBackground
+{
+	background-color:white;
+}
+
+.article-info
+{
+	margin-bottom:1em;
+}
+ 
+/* Firefox reduce dotted lines on links */
+.photo-navigation a:focus, .replaced a:focus {overflow:hidden;}
+
+/* Disqus correction to prevent overflow scroll bars in some designs */
+#dsq-content { overflow:hidden; }
+#dsq-content .dsq-auth-header { width: auto!important; }
+#dsq-content .dsq-by { margin: 4px 6px 0px 0px; }
+#dsq-content .dsq-by a, #dsq-content .dsq-by a:hover { border: 0px none; }
+#dsq-content h3 { margin:0px; }
+
+/* Site menus. Don't wrap the top level items, and wrap sub-menu items normaly. */
+#sitemenu-content ul li span.in { white-space:nowrap;}
+* html #sitemenu-content ul li span.in {white-space: normal}
+*:first-child+html #sitemenu-content ul li span.in {white-space: normal}
+#sitemenu-content ul ul li span.in {white-space: normal}
+#sitemenu-content span.in { position: relative; }
+
+body { word-wrap:break-word; }
+
+/* Make sure scaled-down images look good in IE */
+img { -ms-interpolation-mode: bicubic; }
+
+.HTMLElement { overflow:hidden; }
+
+textarea.fullWidth, input.fullWidth, select.fullWidth {
+	width:96%;
+	margin:4px 0;
+}
+textarea.fullWidth, select.fullWidth {
+	margin: 4px 1px
+}
+
+form.contactElement input.submit {
+	width:auto;
+	display:block;
+	margin-left:auto;
+	margin-right:2%;
+}
+form.contactElement th {
+	text-align:right;
+	font-weight:normal;
+	width:25%;
+}
+
+.contactError { color:red; font-weight:bold; }
+
+/* Contact Element For IE 7 */
+*:first-child+html form.contactElement input.submit {
+	padding:0px 10%;
+	min-width: 0px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+form.contactElement p {
+	text-align: left;
+}
+
+/* 
+   css Copyright © 2005-2012 Karelia Software. All rights reserved.
+   css released under Creative Commons License 
+        - http://creativecommons.org/licenses/by-sa/2.5/ 
+   All associated graphics belong to their respective owners 
+        and are licensed separately. 
+*/
+
+
+/*
+GLOBAL
+
+Try to define style properties as globally as possible. E.g. the basic font setting should be right there for the body element
+*/
+
+
+* { 
+	margin:0px;
+	padding:0px;
+}
+
+body {
+	font-family: Georgia, Palatino, Times, "Times New Roman", serif;
+	font-size: 76%; /* as recommended in CSS guide */
+	color:#111;
+	line-height:1.6;
+}
+
+/* sans-serif font for headings & sitemenu */
+#sitemenu, h2, h3, h4, h5, h6, #title p, .collection-navigation {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h5, h6 {
+	font-size: 100%;
+	margin-bottom: 0.8em;
+}
+
+img {
+	border:0px #000 none;
+}
+
+.article p, .pagelet p {
+	margin-bottom: 0.8em;
+}
+
+
+#page {
+	width:770px;
+	margin:18px auto;
+	padding:15px;
+	background: #fff;
+}
+
+#page-top {
+	background: url(Sky.jpeg) center top no-repeat;
+}
+
+#title {
+	background: transparent url(corner-topright.png) top right no-repeat;
+	overflow: hidden;
+	position: relative;
+	height:160px;
+	text-align:center;
+	color: #fff;
+}
+
+.has-logo h1, .has-logo #title p  {
+	margin-right:210px;
+	width:525px;
+}
+
+* html #title {
+	background-image: url(corner-topright.gif);
+}
+
+
+#title h1 {
+	position: absolute;
+	bottom: 50px;
+	left: 20px;
+	right: 20px;
+	font-size: 240%;
+	text-shadow: #000 2px 1px 2px;
+	line-height:27px;
+}
+
+#title p {
+	position: absolute;
+	bottom: 6px;
+	left: 20px;
+	right: 20px;
+	font-style: italic;
+	text-shadow: #000 1px 1px 2px;
+}
+
+#title h1 a {
+	color:#fff;
+	text-decoration: none;
+	display:block;
+} 
+
+#title img {
+	float: right;
+	margin: 16px 8px 0px 12px;
+}
+
+
+ul, ol, dd {
+	padding-left:20px;
+}
+
+dt {
+	font-style: italic;
+}
+
+
+/*
+SITEMENU
+*/
+
+#sitemenu li{  	
+	max-width:770px;
+}
+#sitemenu-content ul {
+	margin:0px 0px 0 0px;
+	list-style:none;
+	min-height: 2.6em;
+	line-height: 2.6em;
+/*	overflow:hidden; */
+	padding: 0px;
+}
+
+#sitemenu-content ul li {
+	float: left;
+}
+
+#sitemenu-content ul a, 
+#sitemenu-content ul .currentPage > .in {
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #fff;
+	border-right: 1px solid #fff;
+	display: block;
+	padding: 0px 8px;
+}
+
+#sitemenu-content ul li ul {
+	line-height: 1.6em;
+	border-color: #fff;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+}
+
+#sitemenu-content ul li ul li.i1 span.in {
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+}
+
+#sitemenu-content ul ul a, 
+#sitemenu-content ul ul .currentPage > .in {
+	border: 0px none;
+	white-space: normal;
+	padding: 0px;
+}
+
+#sitemenu-content ul ul .currentPage > .in {
+	padding: 5px;
+}
+
+#sitemenu-content .currentPage > .in {
+	background: #fff;
+}
+
+#sitemenu-content a:hover,
+#sitemenu-content .currentParent > a {
+	background: url(corner-topright.png) top right no-repeat;
+}
+
+* html #sitemenu-content a:hover {
+	background-image: url(corner-topright.gif);
+}
+
+#sitemenu-content ul ul a:hover {
+	background-image: none;
+}
+
+
+#sitemenu-content .currentParent > a:hover {
+	color: #fff !important;
+}
+
+#sitemenu-content ul .submenu-indicator {
+	right: -2px;
+}
+
+
+/* 
+MAIN PART 
+*/
+#main-content {
+	float: left;
+	width: 100%;
+}
+
+.article, .general-index, .no-callouts {
+	margin-bottom:1em;
+	padding:10px 6px 6px;
+}
+
+.listing-index {
+	margin-bottom: 1em;
+	padding: 0px 6px;
+}
+
+.general-index .article {
+	margin:0px;
+	padding:0px;
+	border:0px none;
+	background:transparent;
+	clear:left;
+	margin-bottom: 1em;
+}
+
+.article-info {
+	clear:left;
+}
+
+
+.article-info .timestamp {
+	clear:left;
+	text-align:right;
+	background: #eee url(corner-topright.png) top right no-repeat;
+	padding: 1px 0.7em;
+	margin: 3px -6px 6px -6px;
+}
+
+* html .article-info .timestamp {
+	background-image: url(corner-topright.gif);
+}
+
+
+#main h2 {
+	font-weight: bold;
+	padding:0px 6px;
+	border-bottom: 1px solid #eee;
+}
+
+/*
+SIDEBAR & CALLOUTS
+*/
+body.allow-sidebar #main {
+	margin-right:245px;
+	padding-top:1px;
+}
+#sidebar {
+	margin-top:16px;
+	width:230px;
+	float:right;
+}
+
+.pagelet {
+	margin-bottom:15px;
+	padding:0px 0px 2px 0px;
+	overflow:hidden;
+}
+
+.pagelet h4 {
+	margin:0px 0px 2px 0px;
+	color:#fff;
+	padding:1px 6px;
+}
+
+* html .pagelet h4 {
+	background-image: url(corner-topright.gif);
+}
+
+.pagelet.bordered {
+	border-style: solid;
+	border-color: #eee;
+	border-width: 0px 0px 1px 1px;
+}
+
+.pagelet.bordered h4 {
+	border-width: 0px 0px 1px 0px;
+}
+
+.pagelet-body {
+	margin:0px 6px;
+}
+
+
+.callout {
+	width:230px;
+	float:left;
+	margin: 0px 10px 0px 0px ;
+}
+
+.callout .pagelet.bordered {
+	margin-left:-1px;
+}
+
+.blockquote-container>.pagelet-body, .blockquote-container>.graphic {
+	position: relative;
+	padding: 10px;
+	background: -32px 2px no-repeat;
+	background-image: url(QuotationMarks-EarthAndSky.png);
+}
+
+.blockquote-container .pagelet-body:after, .blockquote-container .graphic:after {
+	display: block;
+	position: absolute;
+	height: 70px;
+	width: 70px;
+	bottom: 0px;
+	right: 0px;
+	content: "";
+	background: transparent 45px 27px no-repeat;
+	background-image: url(QuotationMarks-EarthAndSky.png);
+} 
+
+.blockquote-container blockquote {
+	margin: 0px;
+	padding: 0px 15px 0px 10px;
+	z-index: 100;
+	position: relative;
+	font-style: italic;
+}
+
+/* 
+PHOTO GRID PAGE
+*/
+
+.photogrid-index {
+    text-align: center;
+    margin: auto;
+    overflow: hidden; /* for IE 5 Mac */
+	height:1%; /* for IE 5, 6 Win */
+}
+
+.photogrid-index a {
+	text-decoration: none;
+	padding: 1px 3px;
+}
+.photogrid-index h3 a:hover {
+	text-decoration:underline;
+}
+
+.gridItem {
+    float: left;
+    position:relative;
+    width:142px;
+    height:180px;	/* room for caption */
+	margin:5px;
+    padding-top: 10px;
+    color:inherit;
+    overflow: hidden;
+}
+
+body.allow-sidebar .gridItem {
+	width: 160px;
+}
+
+.gridItem h3 {
+    font-weight: normal;
+    font-size: 100%;
+    line-height: 130%;
+    margin: 4px 7px 0px 5px;
+	padding: 0px 2px;
+    position:absolute;
+	top: 140px; /* needs to leave 38px from the bottom of the gridItem */
+	width: 128px;
+}
+
+body.allow-sidebar .gridItem h3 {
+	width:136px;
+	margin: 4px 11px 0px 11px; 
+}
+
+.gridItem img {
+    margin: auto;
+    display:block;
+    position: absolute;
+    top: 0;
+    bottom: 40px;
+    right: 0;
+    left: 0;
+}
+
+
+.gridItem img:hover {
+	border-style: double;
+}
+
+#sidebar .gridItem{
+	margin-left:25px;
+}
+
+
+/*
+PHOTO NAVIGATION
+*/
+.text-navigation #previous-photo, .text-navigation #next-photo, .text-navigation  #photo-list, .text-navigation a, .text-navigation a:hover{
+	background:none!important;
+	font-weight:bold;
+}
+
+
+.photo-navigation {
+	position:relative;
+    height: 21px;
+    width:200px;
+    margin:8px auto 8px auto;
+}
+
+.photo-navigation div {
+	width:34px;
+	height:21px;
+	position: absolute;
+    text-indent: -5000em;
+}
+
+.photo-navigation a {
+	border-bottom:none;
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+#previous-photo{
+    background: url(photo-prev-off.gif) no-repeat;
+    left: 42px;
+}
+#previous-photo a:hover{
+    background: url(photo-prev-o.gif) no-repeat;
+    left: 42px;
+}
+
+#next-photo{
+    background: url(photo-next-off.gif) no-repeat 0 0;
+    left: 124px; 
+}
+#next-photo a:hover{
+    background: url(photo-next-o.gif) no-repeat 0 0;
+    left: 124px; 
+}
+
+#photo-list{
+    background: url(photo-list-off.gif) no-repeat;
+    left: 83px;
+}
+#photo-list a:hover{
+    background: url(photo-list-o.gif) no-repeat;
+    left: 83px;
+}
+
+.image-controls a {
+	border-bottom:none !important;
+}
+
+/* IE 6 Hack */
+/* Hides from IE5-mac \*/
+* html .gridItem img {
+	position: relative;
+	top:0px;
+}
+
+* html .gridItem h3 {
+	position: relative;
+	top: 0px;
+}
+/* End hide from IE5-mac */
+
+
+.collection-navigation {
+	font-weight: bold;
+}
+
+.collection-navigation a {
+	text-decoration: none;
+}
+
+
+
+/* 
+PAGE BOTTOM
+*/
+#page-bottom {
+	margin-top:12px;
+	padding: 1px 1em;
+	line-height:1.4em;
+	background: #eee url(corner-topright.png) top right no-repeat;
+	text-align: center;	
+}
+
+* html #page-bottom {
+	background-image: url(corner-topright.gif);
+}
+
+
+/*
+OTHER
+*/
+.article-thumbnail {
+	float:left;
+	margin: 5px 10px 5px 0;
+}
+/* 
+SANDVOX INTERNALS
+	
+these should be present in every style sheet to ensure that certain classes used by Sandvox to hide and clear elements are respected.
+Don't change them unless you have very good reason to do so.
+*/
+
+.clear {clear: both; height: 0;}
+#main .clear {clear:left;}
+.hidden {display:none;}
+.narrow {float: right; margin:5px 0 5px 10px;}
+img.wide {display: block;}
+.ImageElement, .VideoElement { text-align:center;}
+.contactElement{ padding-top:25px;}
+.narrow.left{ margin: 0.3em 0.7em 0.35px 0; }
+.narrow.right {	margin: 0.3em 0 0.35em 0.7em; }
+.no-page-title .photo-navigation {margin-top:38px;}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi) {
+#page-top {
+ -webkit-background-size: 800px 160px;
+    -moz-background-size: 800px 160px;
+      -o-background-size: 800px 160px;
+         background-size: 800px 160px;
+background-image: url(Sky@2x.jpeg);
+}
+
+}
+
+body {
+	background: #f7f7f7 url(grey/verlauf.png) top left repeat-x;	
+}
+a, a:active {
+	color:#090909;
+}
+a:hover {
+	color:#999999;
+}
+#sitemenu-content ul {
+	background: #090909;
+}
+#sitemenu-content ul li ul {
+	background: #090909;	
+}
+#main h2 {
+	color:#090909;
+}
+.pagelet h4 {
+	background: #090909 url(corner-topright.png) right top no-repeat;
+}
+.gridItem img {
+    border: 1px solid #090909;
+}
+#sitemenu-content .currentPage > .in,
+.gridItem h3 {
+	color:#090909 !important;
+}
+#previous-photo a {
+    background-image: url(grey/photo-prev.gif);
+}
+#next-photo a {
+    background-image: url(grey/photo-next.gif);
+}
+#photo-list a {
+    background-image: url(grey/photo-list.gif);
+}
+
+.callout-container, .graphic-container { clear:left; }
+
+#page-top { background-image: url("banner.png"); }
+

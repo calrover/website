@@ -1,0 +1,1055 @@
+@charset "UTF-8";
+
+/* 
+   css Copyright © 2005-2012 Karelia Software. All rights reserved.
+   css released under Creative Commons License  - http://creativecommons.org/licenses/by-sa/2.5/ 
+   All associated graphics belong to their respective owners and are licensed separately. 
+*/
+
+/* IE7 hacks */
+
+*:first-child+html .gridItem img {
+	position:relative;
+	top:0px;
+}
+
+*:first-child+html .gridItem h3 {
+	position:relative;
+	top:0px;
+}
+
+/* Navigation arrows */
+div.text-navigation { text-align:center; margin-bottom:1em;}
+div.text-navigation div { display:inline; margin:0px 0.5em; }
+.collection-navigation .disabled-navigation { text-indent:-5000px; }
+
+/* 2.0 wrap compatibility. 2.0-compatible designs can further adjust these if they need */
+.wide { display:block; }
+
+.narrow.left {   /* Some designs won't respect without !important */
+    float:left!important;
+    clear:left!important;
+}
+.narrow.right {
+    float:right!important;
+    clear:right!important;
+}
+
+.wide.left .graphic, img.wide.left { margin-left:0px; margin-right:auto; }
+.wide.center .graphic, img.wide.center { margin-left:auto; margin-right:auto; }
+.wide.right .graphic, img.wide.right { margin-left:auto; margin-right:0px; }
+
+.ImageElement.left, .AudioElement.left { text-align:left; }
+.ImageElement.center, .AudioElement.center { text-align:center; }
+.ImageElement.right, .AudioElement.right { text-align:right; }
+
+/* Captions should align themselves with the graphic */
+.graphic-container.left .caption { text-align:left; }
+.graphic-container.center .caption { text-align:center; }
+.graphic-container.right .caption { text-align:right; }
+
+/* Inline iframes need to display as a block to layout right */
+.graphic iframe { display:block; }
+
+/* Pagelet photo grids should be generally be auto width (some 1.x designs hardcoded an exact width) */
+.pagelet .photogrid-index { width:auto; }
+
+/* For content like amazon which forces white background. Design SHOULD set color for A tag and text color. */
+.whiteBackground
+{
+	background-color:white;
+}
+
+.article-info
+{
+	margin-bottom:1em;
+}
+ 
+/* Firefox reduce dotted lines on links */
+.photo-navigation a:focus, .replaced a:focus {overflow:hidden;}
+
+/* Disqus correction to prevent overflow scroll bars in some designs */
+#dsq-content { overflow:hidden; }
+#dsq-content .dsq-auth-header { width: auto!important; }
+#dsq-content .dsq-by { margin: 4px 6px 0px 0px; }
+#dsq-content .dsq-by a, #dsq-content .dsq-by a:hover { border: 0px none; }
+#dsq-content h3 { margin:0px; }
+
+/* Site menus. Don't wrap the top level items, and wrap sub-menu items normaly. */
+#sitemenu-content ul li {white-space: nowrap}
+* html #sitemenu-content ul li {white-space: normal}
+*:first-child+html #sitemenu-content ul li {white-space: normal}
+#sitemenu-content ul ul li {white-space: normal}
+#sitemenu-content span.in { position: relative; }
+
+body { word-wrap:break-word; }
+
+/* Make sure scaled-down images look good in IE */
+img { -ms-interpolation-mode: bicubic; }
+
+/* MODIFIED, BASED ON THE FOLLOWING BASE CSS AND DEFAULT THEME
+*/
+/*
+ * jQuery Nivo Slider v3.2
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2012, Dev7studios
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+ 
+/* The Nivo Slider styles */
+.nivoSlider {
+	position:relative;
+	width:100%;
+	height:auto;
+	overflow: hidden;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	max-width: none;
+}
+.nivo-main-image {
+	display: block !important;
+	position: relative !important; 
+	width: 100% !important;
+}
+
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:6;
+	display:none;
+	background:white; 
+	filter:alpha(opacity=0); 
+	opacity:0;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+	top:0;
+}
+.nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+	overflow:hidden;
+}
+.nivo-box img { display:block; }
+
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	background:#000;
+	color:#fff;
+	width:100%;
+	z-index:8;
+	padding: 5px 10px;
+	opacity: 0.8;
+	overflow: hidden;
+	display: none;
+	-moz-opacity: 0.8;
+	filter:alpha(opacity=8);
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+.nivo-caption p {
+	padding:5px;
+	margin:0;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	position:absolute;
+	top:45%;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-prevNav {
+	left:0px;
+}
+.nivo-nextNav {
+	right:0px;
+}
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav {
+	text-align:center;
+}
+.nivo-controlNav a {
+	cursor:pointer;
+}
+.nivo-controlNav a.active {
+	font-weight:bold;
+}
+
+/*
+Skin Name: Nivo Slider Default Theme
+Skin URI: http://nivo.dev7studios.com
+Description: The default skin for the Nivo Slider.
+Version: 1.3
+Author: Gilbert Pellegrom
+Author URI: http://dev7studios.com
+Supports Thumbs: true
+*/
+
+.nivoSlider {
+	position:relative;
+	background:#fff url(nivo-images/loading.gif) no-repeat 50% 50%;
+    margin-bottom:10px;
+	-webkit-box-shadow: 0px 1px 5px 0px rgb(128,128,128);
+	-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 1px 5px 0px rgb(128,128,128);
+	-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 1px 5px 0px rgb(128,128,128);
+	box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+	margin:0 !important;
+	border:none !important;
+	padding:0 !important;
+}
+.nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.nivo-controlNav a {
+	margin:0 4px;
+}
+
+.nivo-dots .nivo-controlNav a {
+	display:inline-block;
+	width:16px;
+	height:16px;
+	background:url(nivo-images/bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin: 0 2px;
+}
+
+.nivo-directionNav a {
+	display:block;
+	width:30px;
+	height:30px;
+	background:url(nivo-images/arrows.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	opacity: 0;
+	-webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+}
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 240dpi) {
+    .nivo-dots .nivo-controlNav a {
+        background:url(nivo-images/bullets@2x.png) no-repeat;
+		-moz-background-size: 16px 40px;
+		-o-background-size: 16px 40px;
+        -webkit-background-size: 16px 40px;
+		background-size: 16px 40px;
+    }
+	.nivo-directionNav a {
+		background:url(nivo-images/arrows@2x.png) no-repeat;
+		-moz-background-size: 60px 30px;
+		-o-background-size: 60px 30px;
+        -webkit-background-size: 60px 30px;
+		background-size: 60px 30px;
+	}
+}
+
+.nivoSlider:hover .nivo-directionNav a { opacity: 1; }
+
+a.nivo-nextNav {
+	background-position:-30px 0;
+	right:15px;
+}
+a.nivo-prevNav {
+	left:15px;
+}
+
+.nivo-dots .nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+.nivo-caption {
+    font-family: Helvetica, Arial, sans-serif;
+}
+.nivo-caption a {
+    color:#fff;
+    border-bottom:1px dotted #fff;
+}
+.nivo-caption a:hover {
+    color:#fff;
+}
+
+.nivo-thumbs-enabled {
+	width: 100%;
+}
+.nivo-thumbs-enabled a {
+	width: auto;
+	height: auto;
+	background: none;
+	margin-bottom: 5px;
+}
+.nivo-thumbs-enabled img {
+	padding:0 !important; margin:0; background:none !important; border:none;
+}
+
+.HTMLElement { overflow:hidden; }
+
+.photogrid-index-bottom { clear:left; }
+
+/*
+	Based on ColorBox 1.3.19 example1.  Changes:
+		changed "colorbox/" to "colorbox/"
+		removed background:url line for #cboxOverlay
+        added color to #cboxError
+*/
+/*
+    ColorBox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none;}
+.cboxIframe{width:100%; height:100%; display:block; border:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+
+/* 
+    User Style:
+    Change the following styles to modify the appearance of ColorBox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#colorbox{}
+
+    #cboxTopLeft,#cboxTopRight,#cboxBottomLeft,#cboxBottomRight,#cboxMiddleLeft,#cboxMiddleRight{width:21px; height:21px; background:url(colorbox/controls.png) no-repeat}
+
+    #cboxTopLeft{background-position:-101px 0;}
+    #cboxTopRight{background-position:-130px 0;}
+    #cboxBottomLeft{background-position:-101px -29px;}
+    #cboxBottomRight{background-position:-130px -29px;}
+    #cboxMiddleLeft{background-position:left top; background-repeat:repeat-y;}
+    #cboxMiddleRight{background-position:right top; background-repeat:repeat-y;}
+
+    #cboxTopCenter{height:21px; background:url(colorbox/border.png) 0 0 repeat-x;}
+    #cboxBottomCenter{height:21px; background:url(colorbox/border.png) 0 -29px repeat-x;}
+    #cboxContent{background:#fff; overflow:hidden;}
+        .cboxIframe{background:#fff;}
+        #cboxError{padding:50px; border:1px solid #ccc;color:red;}
+        #cboxLoadedContent{margin-bottom:28px;}
+        #cboxTitle{position:absolute; bottom:4px; left:0; text-align:center; width:100%; color:#949494;}
+        #cboxCurrent{position:absolute; bottom:4px; left:58px; color:#949494;}
+        #cboxSlideshow{position:absolute; bottom:4px; right:30px; color:#0092ef;}
+            
+        #cboxPrevious,#cboxNext,#cboxClose{background:url(colorbox/controls.png) no-repeat; width:25px; height:25px; text-indent:-9999px;}
+            
+        #cboxPrevious{position:absolute; bottom:0; left:0; background-position:-75px 0;}
+        #cboxPrevious:hover{background-position:-75px -25px;}
+        #cboxNext{position:absolute; bottom:0; left:27px; background-position:-50px 0;}
+        #cboxNext:hover{background-position:-50px -25px;}
+        #cboxLoadingOverlay{background:url(colorbox/loading_background.png) no-repeat center center;}
+        #cboxLoadingGraphic{background:url(colorbox/loading.gif) no-repeat center center;}
+        #cboxClose{position:absolute; bottom:0; right:0; background-position:-25px 0;}
+        #cboxClose:hover{background-position:-25px -25px;}
+
+            
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 240dpi) {
+    #cboxTopLeft,#cboxTopRight,#cboxBottomLeft,#cboxBottomRight,#cboxMiddleLeft,#cboxMiddleRight,#cboxPrevious,#cboxNext,#cboxClose{
+        background-image:url(colorbox/controls@2x.png);
+        -moz-background-size: 176px 50px;;
+        -o-background-size: 176px 50px;;
+        -webkit-background-size: 176px 50px;;
+        background-size: 176px 50px;;
+    }
+}
+
+/*
+  The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
+  when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to or needed in IE9.
+  See: http://jacklmoore.com/notes/ie-transparency-problems/
+*/
+.cboxIE #cboxTopLeft,
+.cboxIE #cboxTopCenter,
+.cboxIE #cboxTopRight,
+.cboxIE #cboxBottomLeft,
+.cboxIE #cboxBottomCenter,
+.cboxIE #cboxBottomRight,
+.cboxIE #cboxMiddleLeft,
+.cboxIE #cboxMiddleRight {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+}
+
+/*
+  The following provides PNG transparency support for IE6
+  Feel free to remove this and the /ie6/ directory if you have dropped IE6 support.
+*/
+.cboxIE6 #cboxTopLeft{background:url(colorbox/ie6/borderTopLeft.png);}
+.cboxIE6 #cboxTopCenter{background:url(colorbox/ie6/borderTopCenter.png);}
+.cboxIE6 #cboxTopRight{background:url(colorbox/ie6/borderTopRight.png);}
+.cboxIE6 #cboxBottomLeft{background:url(colorbox/ie6/borderBottomLeft.png);}
+.cboxIE6 #cboxBottomCenter{background:url(colorbox/ie6/borderBottomCenter.png);}
+.cboxIE6 #cboxBottomRight{background:url(colorbox/ie6/borderBottomRight.png);}
+.cboxIE6 #cboxMiddleLeft{background:url(colorbox/ie6/borderMiddleLeft.png);}
+.cboxIE6 #cboxMiddleRight{background:url(colorbox/ie6/borderMiddleRight.png);}
+
+.cboxIE6 #cboxTopLeft,
+.cboxIE6 #cboxTopCenter,
+.cboxIE6 #cboxTopRight,
+.cboxIE6 #cboxBottomLeft,
+.cboxIE6 #cboxBottomCenter,
+.cboxIE6 #cboxBottomRight,
+.cboxIE6 #cboxMiddleLeft,
+.cboxIE6 #cboxMiddleRight {
+    _behavior: expression(this.src = this.src ? this.src : this.currentStyle.backgroundImage.split('"')[1], this.style.background = "none", this.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + this.src + ", sizingMethod='scale')");
+}
+
+textarea.fullWidth, input.fullWidth, select.fullWidth {
+	width:96%;
+	margin:4px 0;
+}
+textarea.fullWidth, select.fullWidth {
+	margin: 4px 1px
+}
+
+form.contactElement input.submit {
+	width:auto;
+	display:block;
+	margin-left:auto;
+	margin-right:2%;
+}
+form.contactElement th {
+	text-align:right;
+	font-weight:normal;
+	width:25%;
+}
+
+.contactError { color:red; font-weight:bold; }
+
+/* Contact Element For IE 7 */
+*:first-child+html form.contactElement input.submit {
+	padding:0px 10%;
+	min-width: 0px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+form.contactElement p {
+	text-align: left;
+}
+
+/* 
+   css Copyright © 2005-2012 Karelia Software. All rights reserved.
+   css released under Creative Commons License 
+        - http://creativecommons.org/licenses/by-sa/2.5/ 
+   All associated graphics belong to their respective owners 
+        and are licensed separately. 
+*/
+
+
+/*
+GLOBAL
+
+Try to define style properties as globally as possible. E.g. the basic font setting should be right there for the body element
+*/
+
+
+* { 
+	margin:0px;
+	padding:0px;
+}
+
+body {
+	font-family: Georgia, Palatino, Times, "Times New Roman", serif;
+	font-size: 76%; /* as recommended in CSS guide */
+	color:#111;
+	line-height:1.6;
+}
+
+/* sans-serif font for headings & sitemenu */
+#sitemenu, h2, h3, h4, h5, h6, #title p, .collection-navigation {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h5, h6 {
+	font-size: 100%;
+	margin-bottom: 0.8em;
+}
+
+img {
+	border:0px #000 none;
+}
+
+.article p, .pagelet p {
+	margin-bottom: 0.8em;
+}
+
+
+#page {
+	width:770px;
+	margin:18px auto;
+	padding:15px;
+	background: #fff;
+}
+
+#page-top {
+	background: url(Sky.jpeg) center top no-repeat;
+}
+
+#title {
+	background: transparent url(corner-topright.png) top right no-repeat;
+	overflow: hidden;
+	position: relative;
+	height:160px;
+	text-align:center;
+	color: #fff;
+}
+
+.has-logo h1, .has-logo #title p  {
+	margin-right:210px;
+	width:525px;
+}
+
+* html #title {
+	background-image: url(corner-topright.gif);
+}
+
+
+#title h1 {
+	position: absolute;
+	bottom: 50px;
+	left: 20px;
+	right: 20px;
+	font-size: 240%;
+	text-shadow: #000 2px 1px 2px;
+	line-height:27px;
+}
+
+#title p {
+	position: absolute;
+	bottom: 6px;
+	left: 20px;
+	right: 20px;
+	font-style: italic;
+	text-shadow: #000 1px 1px 2px;
+}
+
+#title h1 a {
+	color:#fff;
+	text-decoration: none;
+	display:block;
+} 
+
+#title img {
+	float: right;
+	margin: 16px 8px 0px 12px;
+}
+
+
+ul, ol, dd {
+	padding-left:20px;
+}
+
+dt {
+	font-style: italic;
+}
+
+
+/*
+SITEMENU
+*/
+
+#sitemenu li{  	
+	max-width:770px;
+}
+#sitemenu-content ul {
+	margin:0px 0px 0 0px;
+	list-style:none;
+	min-height: 2.6em;
+	line-height: 2.6em;
+/*	overflow:hidden; */
+	padding: 0px;
+}
+
+#sitemenu-content ul li {
+	float: left;
+}
+
+#sitemenu-content ul a, 
+#sitemenu-content ul .currentPage > .in {
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #fff;
+	border-right: 1px solid #fff;
+	display: block;
+	padding: 0px 8px;
+}
+
+#sitemenu-content ul li ul {
+	line-height: 1.6em;
+	border-color: #fff;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+}
+
+#sitemenu-content ul li ul li.i1 span.in {
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+}
+
+#sitemenu-content ul ul a, 
+#sitemenu-content ul ul .currentPage > .in {
+	border: 0px none;
+	white-space: normal;
+	padding: 0px;
+}
+
+#sitemenu-content ul ul .currentPage > .in {
+	padding: 5px;
+}
+
+#sitemenu-content .currentPage > .in {
+	background: #fff;
+}
+
+#sitemenu-content a:hover,
+#sitemenu-content .currentParent > a {
+	background: url(corner-topright.png) top right no-repeat;
+}
+
+* html #sitemenu-content a:hover {
+	background-image: url(corner-topright.gif);
+}
+
+#sitemenu-content ul ul a:hover {
+	background-image: none;
+}
+
+
+#sitemenu-content .currentParent > a:hover {
+	color: #fff !important;
+}
+
+#sitemenu-content ul .submenu-indicator {
+	right: -2px;
+}
+
+
+/* 
+MAIN PART 
+*/
+#main-content {
+	float: left;
+	width: 100%;
+}
+
+.article, .general-index, .no-callouts {
+	margin-bottom:1em;
+	padding:10px 6px 6px;
+}
+
+.listing-index {
+	margin-bottom: 1em;
+	padding: 0px 6px;
+}
+
+.general-index .article {
+	margin:0px;
+	padding:0px;
+	border:0px none;
+	background:transparent;
+	clear:left;
+	margin-bottom: 1em;
+}
+
+.article-info {
+	clear:left;
+}
+
+
+.article-info .timestamp {
+	clear:left;
+	text-align:right;
+	background: #eee url(corner-topright.png) top right no-repeat;
+	padding: 1px 0.7em;
+	margin: 3px -6px 6px -6px;
+}
+
+* html .article-info .timestamp {
+	background-image: url(corner-topright.gif);
+}
+
+
+#main h2 {
+	font-weight: bold;
+	padding:0px 6px;
+	border-bottom: 1px solid #eee;
+}
+
+/*
+SIDEBAR & CALLOUTS
+*/
+body.allow-sidebar #main {
+	margin-right:245px;
+	padding-top:1px;
+}
+#sidebar {
+	margin-top:16px;
+	width:230px;
+	float:right;
+}
+
+.pagelet {
+	margin-bottom:15px;
+	padding:0px 0px 2px 0px;
+	overflow:hidden;
+}
+
+.pagelet h4 {
+	margin:0px 0px 2px 0px;
+	color:#fff;
+	padding:1px 6px;
+}
+
+* html .pagelet h4 {
+	background-image: url(corner-topright.gif);
+}
+
+.pagelet.bordered {
+	border-style: solid;
+	border-color: #eee;
+	border-width: 0px 0px 1px 1px;
+}
+
+.pagelet.bordered h4 {
+	border-width: 0px 0px 1px 0px;
+}
+
+.pagelet-body {
+	margin:0px 6px;
+}
+
+
+.callout {
+	width:230px;
+	float:left;
+	margin: 0px 10px 0px 0px ;
+}
+
+.callout .pagelet.bordered {
+	margin-left:-1px;
+}
+
+.blockquote-container>.pagelet-body, .blockquote-container>.graphic {
+	position: relative;
+	padding: 10px;
+	background: -32px 2px no-repeat;
+	background-image: url(QuotationMarks-EarthAndSky.png);
+}
+
+.blockquote-container .pagelet-body:after, .blockquote-container .graphic:after {
+	display: block;
+	position: absolute;
+	height: 70px;
+	width: 70px;
+	bottom: 0px;
+	right: 0px;
+	content: "";
+	background: transparent 45px 27px no-repeat;
+	background-image: url(QuotationMarks-EarthAndSky.png);
+} 
+
+.blockquote-container blockquote {
+	margin: 0px;
+	padding: 0px 15px 0px 10px;
+	z-index: 100;
+	position: relative;
+	font-style: italic;
+}
+
+/* 
+PHOTO GRID PAGE
+*/
+
+.photogrid-index {
+    text-align: center;
+    margin: auto;
+    overflow: hidden; /* for IE 5 Mac */
+	height:1%; /* for IE 5, 6 Win */
+}
+
+.photogrid-index a {
+	text-decoration: none;
+	padding: 1px 3px;
+}
+.photogrid-index h3 a:hover {
+	text-decoration:underline;
+}
+
+.gridItem {
+    float: left;
+    position:relative;
+    width:142px;
+    height:180px;	/* room for caption */
+	margin:5px;
+    padding-top: 10px;
+    color:inherit;
+    overflow: hidden;
+}
+
+body.allow-sidebar .gridItem {
+	width: 160px;
+}
+
+.gridItem h3 {
+    font-weight: normal;
+    font-size: 100%;
+    line-height: 130%;
+    margin: 4px 7px 0px 5px;
+	padding: 0px 2px;
+    position:absolute;
+	top: 140px; /* needs to leave 38px from the bottom of the gridItem */
+	width: 128px;
+}
+
+body.allow-sidebar .gridItem h3 {
+	width:136px;
+	margin: 4px 11px 0px 11px; 
+}
+
+.gridItem img {
+    margin: auto;
+    display:block;
+    position: absolute;
+    top: 0;
+    bottom: 40px;
+    right: 0;
+    left: 0;
+}
+
+
+.gridItem img:hover {
+	border-style: double;
+}
+
+#sidebar .gridItem{
+	margin-left:25px;
+}
+
+
+/*
+PHOTO NAVIGATION
+*/
+.text-navigation #previous-photo, .text-navigation #next-photo, .text-navigation  #photo-list, .text-navigation a, .text-navigation a:hover{
+	background:none!important;
+	font-weight:bold;
+}
+
+
+.photo-navigation {
+	position:relative;
+    height: 21px;
+    width:200px;
+    margin:8px auto 8px auto;
+}
+
+.photo-navigation div {
+	width:34px;
+	height:21px;
+	position: absolute;
+    text-indent: -5000em;
+}
+
+.photo-navigation a {
+	border-bottom:none;
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+#previous-photo{
+    background: url(photo-prev-off.gif) no-repeat;
+    left: 42px;
+}
+#previous-photo a:hover{
+    background: url(photo-prev-o.gif) no-repeat;
+    left: 42px;
+}
+
+#next-photo{
+    background: url(photo-next-off.gif) no-repeat 0 0;
+    left: 124px; 
+}
+#next-photo a:hover{
+    background: url(photo-next-o.gif) no-repeat 0 0;
+    left: 124px; 
+}
+
+#photo-list{
+    background: url(photo-list-off.gif) no-repeat;
+    left: 83px;
+}
+#photo-list a:hover{
+    background: url(photo-list-o.gif) no-repeat;
+    left: 83px;
+}
+
+.image-controls a {
+	border-bottom:none !important;
+}
+
+/* IE 6 Hack */
+/* Hides from IE5-mac \*/
+* html .gridItem img {
+	position: relative;
+	top:0px;
+}
+
+* html .gridItem h3 {
+	position: relative;
+	top: 0px;
+}
+/* End hide from IE5-mac */
+
+
+.collection-navigation {
+	font-weight: bold;
+}
+
+.collection-navigation a {
+	text-decoration: none;
+}
+
+
+
+/* 
+PAGE BOTTOM
+*/
+#page-bottom {
+	margin-top:12px;
+	padding: 1px 1em;
+	line-height:1.4em;
+	background: #eee url(corner-topright.png) top right no-repeat;
+	text-align: center;	
+}
+
+* html #page-bottom {
+	background-image: url(corner-topright.gif);
+}
+
+
+/*
+OTHER
+*/
+.article-thumbnail {
+	float:left;
+	margin: 5px 10px 5px 0;
+}
+/* 
+SANDVOX INTERNALS
+	
+these should be present in every style sheet to ensure that certain classes used by Sandvox to hide and clear elements are respected.
+Don't change them unless you have very good reason to do so.
+*/
+
+.clear {clear: both; height: 0;}
+#main .clear {clear:left;}
+.hidden {display:none;}
+.narrow {float: right; margin:5px 0 5px 10px;}
+img.wide {display: block;}
+.ImageElement, .VideoElement { text-align:center;}
+.contactElement{ padding-top:25px;}
+.narrow.left{ margin: 0.3em 0.7em 0.35px 0; }
+.narrow.right {	margin: 0.3em 0 0.35em 0.7em; }
+.no-page-title .photo-navigation {margin-top:38px;}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi) {
+#page-top {
+ -webkit-background-size: 800px 160px;
+    -moz-background-size: 800px 160px;
+      -o-background-size: 800px 160px;
+         background-size: 800px 160px;
+background-image: url(Sky@2x.jpeg);
+}
+
+}
+
+body {
+	background: #e9f4ff url(blue/verlauf.png) top left repeat-x;	
+}
+a, a:active {
+	color:#000;
+}
+a:hover {
+	color:#4c7499;
+}
+#sitemenu-content ul {
+	background: #638bb0;
+}
+#sitemenu-content ul li ul {
+	background: #638bb0;	
+}
+#main h2 {
+	color:#638bb0;
+}
+.pagelet h4 {
+	background: #638bb0 url(corner-topright.png) right top no-repeat;
+}
+.gridItem img {
+    border: 1px solid #638bb0;
+}
+#sitemenu-content .currentPage > .in,
+.gridItem h3 {
+	color:#638bb0 !important;
+}
+#previous-photo a {
+    background-image: url(blue/photo-prev.gif);
+}
+#next-photo a {
+    background-image: url(blue/photo-next.gif);
+}
+#photo-list a {
+    background-image: url(blue/photo-list.gif);
+}
+
+.callout-container, .graphic-container { clear:left; }
+
